@@ -1,0 +1,8 @@
+en:
+  spree:
+    promotion_rule_types:
+      taxon:
+        name: Categoría
+        description: La orden incluye productos de la categoría(s) seleccionada(s)
+    taxon_rule:
+      choose_taxons: Escoge categorías

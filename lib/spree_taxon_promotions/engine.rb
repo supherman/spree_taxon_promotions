@@ -18,5 +18,9 @@ module SpreeTaxonPromotions
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
+      app.config.spree.promotions.rules << Spree::Promotion::Rules::Taxon
+    end
   end
 end
