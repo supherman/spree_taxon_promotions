@@ -4,10 +4,10 @@ describe Spree::Promotion::Rules::Taxon do
   describe 'eligible?' do
     let!(:taxon) { create(:taxon) }
     let!(:product) { create(:product, name: 'foo', taxons: [taxon]) }
+    let!(:rule) { Spree::Promotion::Rules::Taxon.create taxons: [taxon] }
+    let!(:order) { create(:order) }
 
     before do
-      rule = Spree::Promotion::Rules::Taxon.create taxons: [taxon]
-      order = create(:order)
       create(:line_item, order: order, variant: product.master)
     end
 
