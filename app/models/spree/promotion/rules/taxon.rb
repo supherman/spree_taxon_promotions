@@ -10,7 +10,11 @@ module Spree
         attr_accessible :taxons, :taxon_ids_string
 
         def eligible?(order, options = {})
-          order.products.any? {|p| Spree::Product.in_taxons(taxons).include?(p) }
+          order.products.any? {|p| products.include?(p) }
+        end
+
+        def products
+          Spree::Product.in_taxons(taxons)
         end
 
         def taxon_ids_string
